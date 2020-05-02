@@ -3,7 +3,8 @@ import pandas as pd
 import os
 from bq_helper import BigQueryHelper
 
-#https://www.kaggle.com/jessicali9530/how-to-query-google-patents-public-data
+#Based on: https://www.kaggle.com/jessicali9530/how-to-query-google-patents-public-data
+#API_KEY_PATH is the path to the API key json in email. Do not upload the json to github security risk and all. 
 API_KEY_PATH = "/Users/jideofor/Documents/cs397/Patents-Research-abd8b4aaf0a8.json"
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = API_KEY_PATH
 PROJECT_ID = "patents-research-275923"
