@@ -11,7 +11,7 @@ Update any packages if necessary by typing y to proceed.</br>
 *(To deactivate venv `conda deactivate`)* </br> </br>
 ***Install the required packages***</br>
 `pip install -r requirements.txt`</br>
-***Add the virtual env kernell to Jupyter notebook***
+***Add the virtual env kernell to Jupyter notebook***</br>
 `ipython kernel install --user --name=patent-modeling`</br></br>
 
 ## Using Jupyter Notebook
