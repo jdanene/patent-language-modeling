@@ -9,6 +9,14 @@ Update any packages if necessary by typing y to proceed.</br>
 ***Activate venv***</br>
 `conda activate patent-modeling` </br>
 *(To deactivate venv `conda deactivate`)* </br> </br>
-**Install the required packages**</br>
+***Install the required packages***</br>
 `pip install -r requirements.txt`</br>
+***Add the virtual env kernell to Jupyter notebook***
+`ipython kernel install --user --name=patent-modeling`</br></br>
 
+## Using Jupyter Notebook
+
+***Opening up notebook***</br>
+`jupyter notebook`</br>
+*When open select the venv  "patent-modeling" as the kernel in Jupyter*. Example below creates a new notebook using "patent-modeling" kernel.
+![JupyterKenerlExample](https://i.imgur.com/pBVcUme.png)
