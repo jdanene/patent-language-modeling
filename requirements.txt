@@ -1,5 +1,6 @@
 numpy===1.18.3
--e git+https://github.com/SohierDane/BigQuery_Helper@8615a7f6c1663e7f2d48aa2b32c2dbcb600a440f#egg=bq_helper 
+-e git+https://github.com/SohierDane/BigQuery_Helper@8615a7f6c1663e7f2d48aa2b32c2dbcb600a440f#egg=bq_helper
 ipython===7.14.0
 pandas===1.0.3
-
+ipykernel===5.2.1
+notebook===6.0.3
