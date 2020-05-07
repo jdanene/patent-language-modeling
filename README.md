@@ -7,8 +7,8 @@
 **Create venv**:`conda create -n patent-modeling python=3.7.3` 
 
 **Activate venv**:`conda activate patent-modeling` </br>
-*(To deactivate venv `conda deactivate`)* </br> </br>
-**Install the required packages**:`pip install -r requirements.txt`</br>
+*(To deactivate venv `conda deactivate`)* </br> 
+**Install the required packages**:`pip install -r requirements.txt`</br> </br>
 **Add the virtual env kernell to Jupyter notebook**:`ipython kernel install --user --name=patent-modeling`</br></br>
 
 ## Using Jupyter Notebook
