@@ -18,5 +18,5 @@ Update any packages if necessary by typing y to proceed.</br>
 
 ***Opening up notebook***</br>
 `jupyter notebook`</br>
-*When open select the venv  "patent-modeling" as the kernel in Jupyter*. Example below creates a new notebook using "patent-modeling" kernel.
+*When open select the venv  "patent-modeling" as the kernel in Jupyter. Example below creates a new notebook using "patent-modeling" kernel.*
 ![JupyterKenerlExample](https://i.imgur.com/pBVcUme.png)
