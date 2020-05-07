@@ -16,3 +16,8 @@
 **Opening up notebook**:`jupyter notebook`</br>
 *When open select the venv  "patent-modeling" as the kernel in Jupyter. Example below creates a new notebook using "patent-modeling" kernel.*
 ![JupyterKenerlExample](https://i.imgur.com/pBVcUme.png)
+
+
+## Running
+
+`App.py` is like main.c or App.js. Entry point of applications runs all the code
