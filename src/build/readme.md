@@ -16,4 +16,10 @@ https://www.kaggle.com/bigquery/patents
 - There are 2,549,438 rows in the database that match our CPC filter and have grant_date >= 20050101 AND grant_date < 20100101
 - There are 1,983,912 rows in the database that match our CPC filter and have grant_date >= 20000101 AND grant_date < 20050101 
 - There are 1,521,278 rows in the database that match our CPC filter and have grant_date>=19950101 AND grant_date < 20000101
+- There are 965,082 rows in the database that match our CPC filter and have grant_date>=19900101 AND grant_date < 19950101
+- There are 666,256 rows in the database that match our CPC filter and have grant_date>=19850101 AND grant_date < 19900101
+- There are 565,570 rows in the database that match our CPC filter and have grant_date>=19800101 AND grant_date < 19850101
+- There are 472,812 rows in the database that match our CPC filter and have grant_date>=19750101 AND grant_date < 19800101
+- There are 90,246 rows grant_date>=19550101 AND grant_date < 19600101
+
 
