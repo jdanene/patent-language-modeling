@@ -12,3 +12,8 @@ https://www.kaggle.com/bigquery/patents
     - The patent embeddings were built using a machine learning model that predicted a patent's CPC code from its text. Therefore, the learned embeddings are a vector of 64 continuous numbers intended to encode the information in a patent's text. Distances between the embeddings can then be calculated and used as a measure of similarity between two patents. 
     - https://cloud.google.com/blog/products/data-analytics/expanding-your-patent-set-with-ml-and-bigquery
     - So we can control for poor filtering by including the embedding for CPC code???? 
+- There are 14,406,362 rows in the database that match our CPC filter and have grant_date >= 20100101 
+- There are 2,549,438 rows in the database that match our CPC filter and have grant_date >= 20050101 AND grant_date < 20100101
+- There are 1,983,912 rows in the database that match our CPC filter and have grant_date >= 20000101 AND grant_date < 20050101 
+- There are 1,521,278 rows in the database that match our CPC filter and have grant_date>=19950101 AND grant_date < 20000101
+
