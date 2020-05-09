@@ -30,6 +30,7 @@ OR substr(cpc.code, 1,3) IN ('C07', 'C08', 'C09')
 LIMIT 3;
 """
 
-df = bq_assistant.query_to_pandas(QUERY)
+df = bq_assistant.query_to_pandas_safe(QUERY)
+#df = bq_assistant.query_to_pandas(QUERY)
 print(df)
 
