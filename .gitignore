@@ -751,4 +751,7 @@ MigrationBackup/
 #bq_helper GitHub download
 */bq-helper
 
+# api k
+Patents-Research*.json
+
 # End of https://www.gitignore.io/api/macos,python,pycharm,windows,sublimetext,pycharm+iml,pycharm+all,visualstudio,jupyternotebooks
