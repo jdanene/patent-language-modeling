@@ -54,50 +54,21 @@ def copyTable(client,source_table_id,destination_table_id):
 	print("Query results loaded to the table {}".format(source_table_id))
 
 
-def howManyRows(client,table_id):
-	"""
-	Just counts the number of rows - Change the query to change what's counted. 
+if __name__ == "__main__": 
 
-	"""
+	API_KEY_PATH = "/Users/jideofor/Documents/cs397/Patents-Research-abd8b4aaf0a8.json"
+	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = API_KEY_PATH
+	PROJECT_ID = "patents-research-275923"
 
-	query="""
-	SELECT count(*)
-	FROM `{0}`,unnest(cpc) as cpc
-	WHERE 
-		(substr(cpc.code, 1,4) IN ('A01G', 'A01H', 'A61K', 'A61P', 'A61Q', 'B01F', 'B01J', 'B81B', 'B82B', 'B82Y',
-		'G01N', 'G16H')
-				OR substr(cpc.code, 1,3) IN ('C05', 'C07', 'C08', 'C09', 'C11', 'C12', 'C13', 'C25', 'C40'))
-		AND (grant_date>=19500101 AND grant_date < 19550101)
-	""".format(table_id)
+	#  Set source_table_id to the ID of the original table.
+	source_table_id = "patents-public-data.patents.publications"
 
+	#Set destination_table_id to the ID of the destination table.
+	destination_table_id = "patents-research-275923.patents.publications".format(PROJECT_ID)
 
+	client = bigquery.Client()
 
-	query_job = client.query(query)
-	results = query_job.result()  # Waits for job to complete.
-	for row in results:
-		print(row)
-
-
-#if __name__ == "__main__": 
-
-API_KEY_PATH = "/Users/jideofor/Documents/cs397/Patents-Research-abd8b4aaf0a8.json"
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = API_KEY_PATH
-PROJECT_ID = "patents-research-275923"
-
-#  Set source_table_id to the ID of the original table.
-source_table_id = "patents-public-data.patents.publications"
-
-#Set destination_table_id to the ID of the destination table.
-destination_table_id = "{0}.patents.publications".format(PROJECT_ID)
-
-client = bigquery.Client()
-
-#There are 123,040,349 rows in the database. 
-howManyRows(client,source_table_id)
-
-
-
-#populate the newtable with a copy of a slice of the old
-#copyTable(client,source_table_id,destination_table_id)
+	#populate the newtable with a copy of a slice of the old
+	copyTable(client,source_table_id,destination_table_id)
 
 
