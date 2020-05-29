@@ -7,3 +7,6 @@ notebook===6.0.3
 google-cloud-bigquery===1.24.0
 matplotlib==3.2.1
 scipy==1.4.1
+gsutil==4.51
+google-cloud-storage==1.28.1
+datalab==1.2.0
