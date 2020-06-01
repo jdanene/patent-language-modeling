@@ -21,3 +21,13 @@
 ## Running
 
 `App.py` is like main.c or App.js. Entry point of applications runs all the code
+
+## Using gCloud
+Follow this tutorial: https://medium.com/@senthilnathangautham/colab-gcp-compute-how-to-link-them-together-98747e8d940e
+From the tutorial you can figure out that you actually don't need collab can strictly use juptyer on you VM
+- https://jupyter.readthedocs.io/en/latest/running.html
+- https://cloud.google.com/tpu/docs/creating-deleting-tpus#console
+
+Still need to figure out how to use the provisioned TPUs
+  
+  
