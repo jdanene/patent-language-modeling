@@ -32,4 +32,21 @@ From the tutorial you can figure out that you actually don't need collab can str
 Still need to figure out how to use the provisioned TPUs
   
 Batch size and epoch easy explanation ->https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/#:~:text=The%20batch%20size%20is%20a%20number%20of%20samples%20processed%20before,samples%20in%20the%20training%20dataset.
-  
+
+## Raw Data
+Raw Data located at:
+- 'gs://patents-research/patent_research/data2.tsv' [contains column of date, the text blob contains list of id backword cited, count of backword cited]
+- 'gs://patents-research/patent_research/data2.tsv' [the text blob contains count of backward cited]
+All textblob = p(date, backcited, title, abstract, claims), depending on the data set backcited is either
+- number of patents a specific patent cites
+- number of patents a specific patent cites + the individual id's of these patents
+    - in this case textblob= p(id,date, backcited, title, abstract, claims), we add the id to hopefully get some network features of citation network
+**Example of how to load date:**</br>
+`df.read_csv('gs://patents-research/patent_research/data2.tsv', sep='\t')` </br></br>
+**If using colab must authenticate with:**
+`from google.colab import auth`</br>
+`auth.authenticate_user()`</br>
+`print('Authenticated')`</br>
+
+**If running from VM on google no auth needed if have permission**</br></br>
+**If running from local machine must set env variable `GOOGLE_APPLICATION_CREDENTIALS` to the location of json with api/credentials for project `PROJECT_ID = "patents-research-275923"`**
