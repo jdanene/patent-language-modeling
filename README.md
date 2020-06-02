@@ -31,4 +31,5 @@ From the tutorial you can figure out that you actually don't need collab can str
 
 Still need to figure out how to use the provisioned TPUs
   
+Batch size and epoch easy explanation ->https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/#:~:text=The%20batch%20size%20is%20a%20number%20of%20samples%20processed%20before,samples%20in%20the%20training%20dataset.
   
