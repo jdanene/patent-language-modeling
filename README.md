@@ -37,6 +37,7 @@ Batch size and epoch easy explanation ->https://machinelearningmastery.com/diffe
 Raw Data located at:
 - 'gs://patents-research/patent_research/data2.tsv' [contains column of date, the text blob contains list of id backword cited, count of backword cited]
 - 'gs://patents-research/patent_research/data2.tsv' [the text blob contains count of backward cited]
+
 All textblob = p(date, backcited, title, abstract, claims), depending on the data set backcited is either
 - number of patents a specific patent cites
 - number of patents a specific patent cites + the individual id's of these patents
