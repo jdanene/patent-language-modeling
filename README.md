@@ -35,15 +35,14 @@ Batch size and epoch easy explanation ->https://machinelearningmastery.com/diffe
 
 ## Raw Data
 Raw Data located at:
-- 'gs://patents-research/patent_research/data2.tsv' [contains column of date, the text blob contains list of id backword cited, count of backword cited]
-- 'gs://patents-research/patent_research/data2.tsv' [the text blob contains count of backward cited]
+- 'gs://patents-research/patent_research/data_frwdcorrect.tsv' [contains column of date, the text blob contains list of id backword cited, count of backword cited]
 
 All textblob = p(date, backcited, title, abstract, claims), depending on the data set backcited is either
 - number of patents a specific patent cites
 - number of patents a specific patent cites + the individual id's of these patents
     - in this case textblob= p(id,date, backcited, title, abstract, claims), we add the id to hopefully get some network features of citation network
 **Example of how to load date:**</br>
-`df.read_csv('gs://patents-research/patent_research/data2.tsv', sep='\t')` </br></br>
+`df.read_csv('gs://patents-research/patent_research/data_frwdcorrect.tsv', sep='\t')` </br></br>
 **If using colab must authenticate with:**
 `from google.colab import auth`</br>
 `auth.authenticate_user()`</br>
