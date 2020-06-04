@@ -15,6 +15,7 @@
 ## Using Jupyter Notebook
 
 **Opening up notebook**:`jupyter notebook`</br>
+*(opening notebook on cloud-> `jupyter notebook --port=8081 --no-browser`)* </br>
 *When open select the venv  "patent-modeling" as the kernel in Jupyter. Example below creates a new notebook using "patent-modeling" kernel.*
 ![JupyterKenerlExample](https://i.imgur.com/pBVcUme.png)
 
