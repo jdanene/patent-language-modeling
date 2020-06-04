@@ -34,6 +34,8 @@ Still need to figure out how to use the provisioned TPUs
   
 Batch size and epoch easy explanation ->https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/#:~:text=The%20batch%20size%20is%20a%20number%20of%20samples%20processed%20before,samples%20in%20the%20training%20dataset.
 
+Going to need terminal multiplexing use `tmux` -->https://lukaszwrobel.pl/blog/tmux-tutorial-split-terminal-windows-easily/
+
 ## Raw Data
 Raw Data located at:
 - 'gs://patents-research/patent_research/data_frwdcorrect.tsv' [contains column of date, the text blob contains list of id backword cited, count of backword cited]
