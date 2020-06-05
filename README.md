@@ -37,6 +37,8 @@ Batch size and epoch easy explanation ->https://machinelearningmastery.com/diffe
 Going to need terminal multiplexing use `tmux` -->https://lukaszwrobel.pl/blog/tmux-tutorial-split-terminal-windows-easily/
 
 tpu service name - service-474881951903@cloud-tpu.iam.gserviceaccount.com
+
+login to vm with: `gcloud compute ssh highmem-100disk-52mem --zone us-central1-f --project patents-research-275923`
 ## Raw Data
 Raw Data located at:
 - 'gs://patents-research/patent_research/data_frwdcorrect.tsv' [contains column of date, the text blob contains list of id backword cited, count of backword cited]
