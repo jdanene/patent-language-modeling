@@ -26,7 +26,7 @@ import argparse
 Usage
 >> python -u runBert.py @args.txt
 
-
+python -u runBert.py @params_model1.txt
 ------Example args.txt file -----
 
 --tpuAddress node-3
@@ -311,10 +311,18 @@ def saveModelParams(params, _dir):
             writer.write("%s = %s\n" % (key, str(params[key])))
     print("Model paramters at: {}".format(os.path.join(_dir, "modelParams")))
 
-    
+class LoadFromFile (argparse.Action):
+    def __call__ (self, parser, namespace, values, option_string = None):
+        with values as f:
+            parser.parse_args(f.read().split(), namespace)    
     
 if __name__ == "__main__":
-    my_parser = argparse.ArgumentParser()
+    my_parser = argparse.ArgumentParser(
+            prog="runBert",
+            description='Run bert on patent data!!')
+    
+    parser.add_argument('--file', type=open, action=LoadFromFile)
+    
     my_parser.add_argument(
             '--tpuAddress', 
             action='store', 
