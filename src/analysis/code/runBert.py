@@ -392,7 +392,10 @@ __name__ == "__main__":
     DATA_PATH = "gs://patents-research/patent_research/data_frwdcorrect.tsv"
     OUTPUT_DIR = "bertResults_{}".format(args.outputDir)# where the model will be saved
     BUCKET = "patents-research"
-    
+    setUp_output_dir() # set output directory
+    os.environ['TFHUB_CACHE_DIR'] =  os.path.join(OUTPUT_DIR,"tfhub_cache") # Force TF Hub writes to the GS bucket we provide.
+    tf.gfile.MakeDirs(os.path.join(OUTPUT_DIR,"tfhub_cache"))
+
     DATA_COLUMN = 'text'
     LABEL_COLUMN = 'label'
     label_list = [0, 1, 2] 
@@ -402,14 +405,8 @@ __name__ == "__main__":
     TEST_TFRecord_PATH= "gs://patents-research/patent_research/{}_{}.pickle".format("test_features",MAX_SEQ_LENGTH)
     BERT_MODEL_HUB = args.modelHub
 
-    #Set output directory
-    setUp_output_dir()
-    # Force TF Hub writes to the GS bucket we provide.
-    os.environ['TFHUB_CACHE_DIR'] =  os.path.join(OUTPUT_DIR,"tfhub_cache")
-    tf.gfile.MakeDirs(os.path.join(OUTPUT_DIR,"tfhub_cache"))
+    ######### Model Parameters #######
 
-
-    # Model Parameters
     # These hyperparameters are copied from this colab notebook (https://colab.sandbox.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb)
     BATCH_SIZE = args.batchSize
     EVAL_BATCH_SIZE = NUM_TPU_CORES
@@ -417,7 +414,8 @@ __name__ == "__main__":
     LEARNING_RATE = 2e-5
     NUM_TRAIN_EPOCHS = args.epochs
     DROPOUT_KEEP_PROB = args.dropout
-    # Warmup is a period of time where hte learning rate 
+
+    # Warmup is a period of time where the learning rate 
     # is small and gradually increases--usually helps training.
     WARMUP_PROPORTION = 0.1
     # Model configs
@@ -451,12 +449,21 @@ __name__ == "__main__":
             "SAVE_CHECKPOINTS_STEPS":SAVE_CHECKPOINTS_STEPS,
             "SAVE_SUMMARY_STEPS":SAVE_SUMMARY_STEPS,
             "num_train_steps":num_train_steps,
-            "num_warmup_steps":num_warmup_steps
+            "num_warmup_steps":num_warmup_steps, 
+            "num_labels":len(label_list)
             }
     saveModelParams(params,OUTPUT_DIR)
 
 
-
+    mode_fn = model_fn_builder(
+      num_labels=len(label_list),
+      learning_rate=LEARNING_RATE,
+      num_train_steps=num_train_steps,
+      num_warmup_steps=num_warmup_steps,
+      dropout = DROPOUT_KEEP_PROB,
+      use_tpu = USE_TPU,
+      bert_hub_module_handle = BERT_MODEL_HUB
+    )
 
     #####################################################
     ########### RUNNING SET UP FUNCTIONS ################
@@ -476,15 +483,7 @@ __name__ == "__main__":
     #####################################################
     ########## Train + Eval Model #######################
     #####################################################
-    mode_fn = model_fn_builder(
-      num_labels=len(label_list),
-      learning_rate=LEARNING_RATE,
-      num_train_steps=num_train_steps,
-      num_warmup_steps=num_warmup_steps,
-      dropout = DROPOUT_KEEP_PROB,
-      use_tpu = USE_TPU,
-      bert_hub_module_handle = BERT_MODEL_HUB
-    )
+
     
     #estimator = getEstimator(mode_fn) 
     #model_train(estimator)
