@@ -321,7 +321,7 @@ if __name__ == "__main__":
             prog="runBert",
             description='Run bert on patent data!!')
     
-    parser.add_argument('--file', type=open, action=LoadFromFile)
+    my_parser.add_argument('--file', type=open, action=LoadFromFile)
     
     my_parser.add_argument(
             '--tpuAddress', 
