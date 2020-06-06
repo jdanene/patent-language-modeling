@@ -50,6 +50,18 @@ def generateLable(dataset):
 	return dataset
 
 
+def saveToGcloud(path,data,isPandas = False ):
+    '''Saves to gcloud so we dont have to do this long ass step every time'''
+    if isPandas:
+        data.to_csv(path, index=False, sep="\t")
+    else:
+        with file_io.FileIO(path, mode='w') as f:
+            pickle.dump(data,f)
+
+
+
+
+
 def loadData(MAX_SEQ_LENGTH,TRAIN_TFRecord_PATH,TEST_DF_PATH,DATA_PATH):
 	DATA_COLUMN = 'text'
 	LABEL_COLUMN = 'label'
@@ -142,10 +154,11 @@ if __name__ == "__main__":
 
 
 	DATA_PATH = "gs://patents-research/patent_research/data_frwdcorrect.tsv"
-	TRAIN_DF_PATH= "gs://patents-research/patent_research/{}_{}.tsv".format("bert_train_df",MAX_SEQ_LENGTH) 
-	TEST_DF_PATH="gs://patents-research/patent_research/{}_{}.tsv".format("bert_test",MAX_SEQ_LENGTH)
+	TRAIN_TFRecord_PATH= "gs://patents-research/patent_research/{}_{}.pickle".format("train_features",MAX_SEQ_LENGTH)
+	TEST_TFRecord_PATH= "gs://patents-research/patent_research/{}_{}.pickle".format("test_features",MAX_SEQ_LENGTH)
 
-	loadData(MAX_SEQ_LENGTH,TRAIN_DF_PATH, TEST_DF_PATH,DATA_PATH)
+
+	loadData(MAX_SEQ_LENGTH,TRAIN_TFRecord_PATH, TEST_TFRecord_PATH,DATA_PATH)
 	sys.exit()
 
 
