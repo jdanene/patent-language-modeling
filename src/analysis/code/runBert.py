@@ -318,10 +318,11 @@ class LoadFromFile (argparse.Action):
     
 if __name__ == "__main__":
     my_parser = argparse.ArgumentParser(
+            fromfile_prefix_chars='@',
             prog="runBert",
             description='Run bert on patent data!!')
     
-    my_parser.add_argument('--file', type=open, action=LoadFromFile)
+    #my_parser.add_argument('--file', type=open, action=LoadFromFile)
     
     my_parser.add_argument(
             '--tpuAddress', 
