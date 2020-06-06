@@ -22,7 +22,12 @@ import gc
 import threading
 import logging
 import argparse
+"""
 
+Example of process running in background for SeqLength = 300:
+>> nohup python -u 300 &
+
+"""
 def loadPdData(gsPath):
 	return pd.read_csv(gsPath, sep = "\t")
 
@@ -142,4 +147,7 @@ if __name__ == "__main__":
 
 	loadData(MAX_SEQ_LENGTH,TRAIN_DF_PATH, TEST_DF_PATH,DATA_PATH)
 	sys.exit()
+
+
+
 
