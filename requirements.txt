@@ -1,5 +1,4 @@
 numpy===1.18.3
--e git+https://github.com/SohierDane/BigQuery_Helper@8615a7f6c1663e7f2d48aa2b32c2dbcb600a440f#egg=bq_helper
 ipython===7.14.0
 pandas===1.0.3
 ipykernel===5.2.1
@@ -18,4 +17,5 @@ tensorflow==1.15.3
 tensorflow-datasets>=2
 tensorflow_hub>=0.6.0
 bert-tensorflow
-transformers==1.15.3
+transformers
+gcsfs
