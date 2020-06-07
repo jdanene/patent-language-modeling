@@ -417,9 +417,9 @@ if __name__ == "__main__":
     tpu_cluster_resolver = tf.distribute.cluster_resolver.TPUClusterResolver(tpu=TPU_ADDRESS, zone=TPU_ZONE)
     tf.tpu.experimental.initialize_tpu_system(tpu_cluster_resolver)
     tf.distribute.experimental.TPUStrategy(tpu_cluster_resolver)
-    NUM_TPU_CORES = len(tf.config.experimental.list_logical_devices('TPU'))
-    
-    
+    #NUM_TPU_CORES = len(tf.config.experimental.list_logical_devices('TPU'))
+    NUM_TPU_CORES = 8
+
     if NUM_TPU_CORES==0:
         sys.exit("Problem with tpu make sure region is correct or tpu is runnign")
 
