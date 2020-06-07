@@ -296,7 +296,10 @@ def model_evaluate(estimator, data):
         for key in sorted(result.keys()):
             print('  {} = {}'.format(key, str(result[key])))
             writer.write("%s = %s\n" % (key, str(result[key])))
-      
+            
+####################################################
+#################   Utility Functions ##############
+####################################################
 def saveModelParams(params, _dir):
     """
     Save model params to gCloud
@@ -311,21 +314,26 @@ def saveModelParams(params, _dir):
             writer.write("%s = %s\n" % (key, str(params[key])))
     print("Model paramters at: {}".format(os.path.join(_dir, "modelParams")))
 
-class LoadFromFile (argparse.Action):
-    def __call__ (self, parser, namespace, values, option_string = None):
-        with values as f:
-            parser.parse_args(f.read().split(), namespace)    
-    
+
+def convert_arg_line_to_args(arg_line):
+    """
+    From: https://stackoverflow.com/questions/25084993/why-isnt-fromfile-prefix-chars-in-python-argparse-working
+    """
+    for arg in arg_line.split():
+        if not arg.strip():
+            continue
+        yield arg
+        
 if __name__ == "__main__":
     my_parser = argparse.ArgumentParser(
             fromfile_prefix_chars='@',
             prog="runBert",
             description='Run bert on patent data!!')
     
-    #my_parser.add_argument('--file', type=open, action=LoadFromFile)
+    my_parser.convert_arg_line_to_args = convert_arg_line_to_args
     
     my_parser.add_argument(
-            '--tpuAddress', 
+            '-tpuAddress', 
             action='store', 
             type=str, 
             required=True, 
@@ -333,17 +341,17 @@ if __name__ == "__main__":
             )
     
     my_parser.add_argument(
-            '--tpuZone', 
+            '-tpuZone', 
             action='store', 
             type=str, 
             required=False, 
             nargs='?',
-            const="us-central1-f",
+            default="us-central1-f",
             help="The zone that the TPU is in: default us-central1-f"
             )
     
     my_parser.add_argument(
-            '--outputDir', 
+            '-outputDir', 
             action='store', 
             type=str, 
             required=True,
@@ -351,7 +359,7 @@ if __name__ == "__main__":
             )
 
     my_parser.add_argument(
-            '--seqLen', 
+            '-seqLen', 
             action='store', 
             type=int, 
             required=True,
@@ -359,49 +367,47 @@ if __name__ == "__main__":
     )
 
     my_parser.add_argument(
-            '--modelHub', 
+            '-modelHub', 
             action='store', 
             type=str, 
             required=False,
             nargs='?',
-            const="https://tfhub.dev/google/bert_uncased_L-12_H-768_A-12/1",
+            default="https://tfhub.dev/google/bert_uncased_L-12_H-768_A-12/1",
             help="The Bert model Hub"
     )   
         
     my_parser.add_argument(
-            '--batchSize', 
+            '-batchSize', 
             action='store', 
             type=int, 
             required=False,
-            const=64,
+            default=64,
             nargs='?',
             help="The training batch size"
     )  
     
     my_parser.add_argument(
-            '--epochs', 
+            '-epochs', 
             action='store', 
             type=float, 
             required=False,
-            const=40.0,
+            default=40.0,
             nargs='?',
             help="The number of epochs"
     )  
     
     my_parser.add_argument(
-            '--dropout', 
+            '-dropout', 
             action='store', 
             type=float, 
             required=False,
-            const=0.7,
+            default=0.7,
             nargs='?',
             help="Percent of data to keep"
     )  
         
-        
           
     args = my_parser.parse_args()
-    
     
     ##### SET TPU CONSTANTS AND CONNECT TO IT #######
     TPU_ADDRESS = args.tpuAddress
@@ -412,6 +418,7 @@ if __name__ == "__main__":
     tf.tpu.experimental.initialize_tpu_system(tpu_cluster_resolver)
     tf.distribute.experimental.TPUStrategy(tpu_cluster_resolver)
     NUM_TPU_CORES = len(tf.config.experimental.list_logical_devices('TPU'))
+    
     
     if NUM_TPU_CORES==0:
         sys.exit("Problem with tpu make sure region is correct or tpu is runnign")
