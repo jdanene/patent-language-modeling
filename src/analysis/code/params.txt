@@ -1,0 +1,8 @@
+-tpuAddress node-3
+-tpuZone us-central1-f
+-outputDir test
+-seqLen 15
+-modelHub https:///fjnkfmlg
+-batchSize 64
+-epochs 40.0
+-dropout .0

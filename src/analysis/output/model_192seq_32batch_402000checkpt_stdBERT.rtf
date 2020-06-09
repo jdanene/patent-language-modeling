@@ -1,0 +1,52 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\margl1440\margr1440\vieww12600\viewh7380\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 Train:gs://patents-research/patent_research/train_features_192.pickle\
+Test:gs://patents-research/patent_research/test_features_192.pickle\
+tfhub: https://tfhub.dev/google/bert_uncased_L-12_H-768_A-12/1\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \CocoaLigature1 \
+\
+256 seq\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 'https://tfhub.dev/google/bert_uncased_L-12_H-768_A-12/1'\
+Batch 32\
+Num example: 784212\
+Drop out .7\
+Tpu: node-4\
+OUTPUT_DIR = 'gs://patents-research/bertResults_192\
+num_train_steps = 980265\
+Epochs:40\
+Last checkpoint 402000\
+\
+_________ 402000_____________\
+***** Eval results *****\
+  accuracy_95 = 0.3661393\
+  accuracy_99 = 0.018036073\
+  eval_accuracy = 0.6445462\
+  eval_loss = 1.0520862\
+  false_neg_95 = 6170.0\
+  false_neg_99 = 2450.0\
+  false_negatives = 7482.0\
+  false_positives = 61066.0\
+  global_step = 0\
+  loss = 1.05219\
+  true_negatives = 122753.0\
+  true_pos_95 = 3564.0\
+  true_pos_99 = 45.0\
+  true_positives = 4747.0\
+\
+\
+\
+\
+\
+\
+\
+\
+}
