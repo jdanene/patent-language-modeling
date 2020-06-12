@@ -1,0 +1,78 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red209\green113\blue37;\red0\green0\blue0;\red57\green164\blue40;
+}
+{\*\expandedcolortbl;;\cssrgb\c85991\c52029\c18734;\csgray\c0;\cssrgb\c26425\c68732\c20500;
+}
+\margl1440\margr1440\vieww7580\viewh9700\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 Time: \cf3 Training took with 128 seq took time  1 day, 3:54:01.017633\
+BATCH: 128\
+OUTPUT_DIR: gs://patents-research/bertResults_128seq_largemodel\
+BERT_MODEL_HUB = \cf2 'https://tfhub.dev/google/bert_uncased_L-24_H-1024_A-16/1'\
+SEQ-LEN: 128\
+LEARNING RATE: 2e-5\
+EPOCHS: 40\
+DROPOUT: .7\
+num_train_steps: \cf3 245066\
+\
+\
+EVAL EXAMPLE: 196053\
+TRAIN EXAMPLE: 784212\
+- garbage no true positives all false negatives\
+__________________________NEW___________________________________\
+TPU_ADDRESS = \cf2 Node-5\cf3 \
+BATCH_SIZE = \cf4 64\cf3  \
+NUM_TRAIN_EPOCHS = 20.0\
+MAX_SEQ_LENGTH = 128\
+BERT_MODEL_HUB = 'https://tfhub.dev/google/bert_uncased_L-24_H-1024_A-16/1'\
+TRAIN_TFRecord_PATH= "gs://patents-research/patent_research/train_features.pickle"\
+TEST_TFRecord_PATH= "gs://patents-research/patent_research/test_features.pickle"\
+DROPOUT_KEEP_PROB = .9\
+num_train_steps = 245066\
+num_warmup_steps = 24506\
+\
+***** Eval results *****\
+  accuracy_95 = 0.0\
+  accuracy_99 = 0.0\
+  eval_accuracy = 0.9368012\
+  eval_loss = 0.30385926\
+  false_neg_95 = 9962.0\
+  false_neg_99 = 2428.0\
+  false_negatives = 12390.0\
+  false_positives = 0.0\
+  global_step = 245066\
+  loss = 0.29391405\
+  true_negatives = 183658.0\
+  true_pos_95 = 0.0\
+  true_pos_99 = 0.0\
+  true_positives = 0.0\
+________________no fucking with loss___________-\
+Dropout = .7\
+Less negative examples = .4 \
+TRAIN STEPS = 71666\
+Num examples = 114666\
+\
+***** Eval results *****\
+  accuracy_95 = 1.0\
+  accuracy_99 = 0.0\
+  eval_accuracy = 0.050814085\
+  eval_loss = 6.2898173\
+  false_neg_95 = 0.0\
+  false_neg_99 = 2428.0\
+  false_negatives = 0.0\
+  false_positives = 183658.0\
+  global_step = 71666\
+  loss = 6.3030796\
+  true_negatives = 0.0\
+  true_pos_95 = 9962.0\
+  true_pos_99 = 0.0\
+  true_positives = 12390.0\
+\
+\
+So its not how I fix the loss its how I take away datapoint. See what happens if we make epochs 80\
+\
+\
+STEPS = 143332\
+}
